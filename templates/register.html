@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post" class="form-general">
+        <div>
+            <label for="username">Username</label>
+            <input autocomplete="off" autofocus id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div>
+            <label for="name">Your name</label>
+            <input  id="name" name="name" placeholder="Name" type="text">
+        </div>
+        <div>
+            <label for="league">Pick your group</label>
+            <select name="league">
+                <option disabled selected>Pick your group</option>
+                {% for league in leagues %}
+                    <option value="{{ league.league }}">{{ league.league}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="team">Input your team (optional)</label>
+            <input  id="team" name="team" placeholder="Input your team (optional)" type="text">
+        </div>
+        <div>
+            <label for="password">Input password</label>
+            <input  id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div>
+            <label for="confirmation">Repeat your chosen password</label>
+            <input  id="confirmation" name="confirmation" placeholder="Password (again)" type="password">
+        </div>
+        <button class="button primary" type="submit">Register</button>
+    </form>
+{% endblock %}

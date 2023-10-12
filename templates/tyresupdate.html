@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tyres Update
+{% endblock %}
+
+{% block main %}
+    <form action="/tyresupdate" method="post" class="form-medium">
+        <table>
+            <thead>
+                <tr><h5>Input the Tyres for the Season</h5></tr>
+                <tr>
+                    <th>Brand</th>
+                    <th>Season</th>
+                    <th>League</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+                <tr>
+                    <td><input name="brand" type="text"></td>
+                    <td><input name="season" type="number" min="89"></td>
+                    <td><input name="league" type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="button primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

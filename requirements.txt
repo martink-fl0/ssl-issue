@@ -1,0 +1,8 @@
+bs4
+CS50
+Flask
+Flask-Session
+gunicorn
+psycopg2-binary
+requests
+retrying

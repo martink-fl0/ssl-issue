@@ -1,0 +1,98 @@
+body {
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5vh;
+}
+
+h5 {
+    color: #34547F;
+    font-family: "Anton", regular;
+    text-align: center;
+}
+
+table {
+    text-align: center;
+}
+
+th {
+    text-align: center!important;
+}
+
+.admin-buttons {
+    min-width: 18vw;
+}
+
+.settings-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2.5vh;
+}
+
+.tyres-reveal {
+    font-family: "Anton", regular;
+    color: #34547F;
+    float: left;
+}
+
+
+option {
+    margin: auto;
+    padding: 6px 0;
+}
+
+.form-small {
+    justify-content: center;
+}
+
+.form-general {
+    justify-content: center;
+}
+
+.form-medium {
+    justify-content: center;
+}
+
+.form-large {
+    justify-content: center;
+}
+
+.big-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5vh;
+}
+
+.whatever {
+    cursor: default;
+}
+
+.spoiler-content {
+    display: none;
+  }
+
+.spoiler-button {
+    color: #34547F;
+    padding: 5px 10px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+
+#asset-names, #total-pred, #correct-pred, #incorrect-pred {
+    font-weight: bold;
+    cursor: pointer;
+  }

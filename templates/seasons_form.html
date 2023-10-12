@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Season {{ season}} Standings
+{% endblock %}
+
+{% block main %}
+    <div class="settings-panel">
+        <div class="form-large">
+            <h5>Choose a season to revisit the final standings</h5>
+            <form action="/seasons_search" method="post" class="form-general" id="seasons_search_form">
+                <select name="season">
+                    {% for season in seasons %}
+                        <option value="{{ season }}">Season {{ season }}</option>
+                    {% endfor %}
+                </select>
+                <button class="button primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

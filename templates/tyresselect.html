@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Tyres Select
+{% endblock %}
+
+{% block main %}
+    <form action="/tyresselect" method="post" class="form-large">
+        <table>
+            <thead>
+                <tr><h5>Input Tyres Choices</h5></tr>
+                <tr>
+                    <th>Season</th>
+                    <th>League</th>
+                    <th>Name</th>
+                    <th>Tyre Choice</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in assets %}
+                <tr>
+                    <td>{{ asset.season }}</td>
+                    <td>{{ asset.league }}</td>
+                    <td>{{ asset.fullname }}</td>
+                    <td><select name="tyres">
+                        <option disabled selected>Pick tyre brand</option>
+                        {% for tyre in tyres %}
+                            <option value="{{ tyre.tyres_id }}">{{ tyre.brand }}</option>
+                        {% endfor %}
+                    </select></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="button primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

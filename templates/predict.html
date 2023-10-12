@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if lenpred == 0 %}Predict{% else %}Edit Predictions{% endif %}
+{% endblock %}
+
+{% block main %}
+    <form action="/predict" method="post" class="form-general" id="predictions_form">
+        <table>
+            <tr><h5>Select up to 30 managers</h5></tr>
+            <tr>
+                <th colspan="2">Current Selections</th>
+                <th id="current_selections1">{% if lenpred %}{{ lenpred }}{% else %}0{% endif %}</th>               
+            </tr>
+            <tr>
+                <th>#</th>
+                <th>Manager</th>
+                <th>Brands</th>
+            </tr>
+            {% for manager in managers %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                {% if manager.selected %}
+                    <td data-manager="{{ manager.selection_id }}"><strong>{{ manager.fullname }}</strong></td>
+                {% else %}
+                    <td data-manager="{{ manager.selection_id }}">{{ manager.fullname }}</td>
+                {% endif %}
+                <td>
+                    <select name="tyres">
+                        <option value="not picked" selected>Pick a brand</option>
+                        {% for tyre in tyres %}
+                            {% if tyre.tyres_id == manager.tyres_id %}
+                                <option  value="{{ manager.selection_id}}/{{ tyre.tyres_id }}" selected><strong>{{ tyre.brand }}</strong></option>
+                            {% else %}
+                                <option  value="{{ manager.selection_id}}/{{ tyre.tyres_id }}">{{ tyre.brand }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="2">Current Selections</th>
+                <th id="current_selections2">{% if lenpred %}{{ lenpred }}{% else %}0{% endif %}</th>
+            </tr>
+        </table>
+        <button id="submit_button" class="button primary" type="submit">{% if lenpred == 0 %}Submit{% else %}Edit{% endif %}</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/predict.js"></script>
+{% endblock %}

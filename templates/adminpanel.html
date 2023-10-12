@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Admin Panel
+{% endblock %}
+
+{% block main %}
+        <div class="settings-panel">
+                <a href="/recoverpass"><button class="button primary admin-buttons">Password Management</button></a>
+                <a href="/tyresupdate"><button class="button primary admin-buttons">Scrape Tyres for the Season</button></a>
+                <a href="/assetsupdate"><button class="button primary admin-buttons">Scrape Assets for the Season</button></a>
+                <a href="/tyresselect"><button class="button primary admin-buttons">Scrape Season's Tyres Choices</button></a>
+                <a href="/gamestatus"><button class="button alert admin-buttons">Manage Game Status</button></a>
+                <a href="/endofseason"><button class="button alert admin-buttons">Calculate Season Results</button></a>
+        </div>
+{% endblock %}

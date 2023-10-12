@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Update your data
+{% endblock %}
+
+{% block main %}
+    <form action="/data" method="post" class="form-general">
+        <div>
+            <label for="league">Update your group</label>
+            <select name="league">
+                {% for league in leagues %}
+                    {% if league.league == currentdata.league %}
+                        <option value="{{ league.league }}" selected>{{ league.league}}</option>
+                    {% else %}
+                        <option value="{{ league.league }}">{{ league.league}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="team">Update your team</label>
+            {% if currentdata.team %}
+                <input  id="team" name="team" type="text" value="{{ currentdata.team }}">
+            {% else %}
+                <input  id="team" name="team" placeholder="Update your team" type="text">
+            {% endif %}
+        </div>
+        <button class="button primary" type="submit">Update</button>
+    </form>
+{% endblock %}

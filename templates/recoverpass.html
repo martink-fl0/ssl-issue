@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Password recovery
+{% endblock %}
+
+{% block main %}
+    <form action="/recoverpass" method="post" class="form-general">
+        <div>
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div>
+            <label for="newpass">Input new password</label>
+            <input id="newpass" name="newpass" type="password">
+        </div>
+        <button class="button alert" type="submit">Hash new password</button>
+    </form>
+{% endblock %}

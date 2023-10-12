@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Season {{ season}} Standings
+{% endblock %}
+
+{% block main %}
+    <div class="settings-panel">
+        <div class="form-large">
+            <table>
+                <thead>
+                    <tr><h5>Final Standings for Season {{ season }}</h5></tr>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Total Score</th>
+                        <th>Number of Picks</th>
+                        <th>Incorrect</th>
+                        <th>Correct Pipis</th>
+                        <th>% Correct</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for e in endofseason %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ e.user_name }}</td>
+                            <td>{{ e.total_score }}</td>
+                            <td>{{ e.number_picks}}</td>
+                            <td>{{ e.incorrect }}</td>
+                            <td>{{ e.correct_p }}</td>
+                            <td>{{ '%0.2f'|format(e.perc_correct|float) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="spoiler form-large" style="text-align: center;">
+            <button class="spoiler-button">
+                <h5>
+                {% if status == "Open" %}Last Season's {% endif %}Predicted Managers ▷
+                </h5>
+            </button>
+            <table class="spoiler-content">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><button id="asset-names">Name ▷</button></th>
+                        <th>Brand</th>
+                        <th><button id="total-pred">Total Predictions ▽</button></th>
+                        <th><button id="correct-pred">% Correct ▷</button></th>
+                        <th><button id="incorrect-pred">% Incorrect ▷</button></th>
+                    </tr>
+                </thead>
+                <tbody id="assets">
+                    {% for a in assetaccuracy %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td class="sortable0">{{ a.fullname }}</td>
+                            {% if a.brand %}
+                                <td>{{ a.brand }}</td>
+                            {% else %}
+                                <td>No choice</td>
+                            {% endif %}
+                            <td class="sortable1">{{ a.total_pred }}</td>
+                            <td class="sortable2">{{ '%0.2f'|format(a.pred_right|float) }}%</td>
+                            <td class="sortable3">{{ '%0.2f'|format(a.pred_wrong|float) }}%</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        {% if currentpred %}
+            <div class="spoiler form-medium" style="text-align: center;">
+                <button class="spoiler-button">
+                    <h5>
+                        Your Final Predictions ▷
+                    </h5>
+                </button>
+                <table class="spoiler-content">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Manager</th>
+                            <th>Tyre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in currentpred %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ c.fullname }}</td>
+                            <td>{{ c.brand }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/static/js/index.js"></script>
+{% endblock %}

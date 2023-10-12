@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- Foundation Stylesheet -->
+        <link href="/static/css/foundation/foundation.min.css" rel="stylesheet">
+
+        <!-- Foundation Javascript -->
+        <script src="/static/js/foundation/jquery.js"></script>
+        <script src="/static/js/foundation/what-input.js"></script>
+        <script src="/static/js/foundation/foundation.js"></script>
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+        <!-- Favicon and my own Stylesheet -->
+        <link href="/static/images/favicon.ico" rel="icon">
+        <link href="/static/css/styles.css" rel="stylesheet">
+        <!-- My Scripts -->
+        <script src="/static/js/layout.js"></script>
+        {% block script %}
+        {% endblock %}
+
+        <title>GPRO Tyres Prediction: {% block title %}{% endblock %}</title>
+        <!-- Embedded previews Metas -->
+        <meta content="GPRO Tyres Prediction Game" property="og:title" />
+        <meta content="Predict tyres brand of Elite players for the upcoming season!" property="og:description" />
+        <meta content="https://tyres-prediction-game-production.up.railway.app" property="og:url" />
+        <meta content="https://tyres-prediction-game-production.up.railway.app/static/images/GTP-SquareLogo.jpg" property="og:image" />
+        <meta content="#34547F" data-react-helmet="true" name="theme-color" />
+    </head>
+
+    <body>
+        <!-- Responsive Navigation Bar -->
+        <nav>
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <a href="/"><img src="/static/images/tyreslogo.png"></a>
+                </div>
+                <div class="top-bar-right">
+                  <ul class="menu">
+                    {% if session["user_id"] %}
+                        {% if session["user_id"] == 1 %}
+                            <li><a href="/adminpanel"><button class="hollow button alert">Admin Panel</button></a></li>
+                        {% endif %}
+                        <li><a href="/predict"><button class="hollow button">Predict Tyres</button></a></li>
+                        <li><a href="/seasons_search"><button class="hollow button">Old Seasons</button></a></li>
+                        <li><a href="/settings"><button class="hollow button">Settings</button></a></li>
+                        <li><a href="/logout"><button class="hollow button">Logout</button></a></li>
+                    {% else %}
+                        <li><a href="/register"><button class="hollow button">Register</button></a></li>
+                        <li><a href="/login"><button class="hollow button">Log in</button></a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+        </nav>
+        <!-- Header -->
+        <header>
+            <!-- Flashed Messages -->
+            {% if get_flashed_messages() %}
+                <div  class="callout primary" role="alert" data-closable>
+                    {{ get_flashed_messages() | join(" ") }}
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            {% if session["user_id"] == 4 %}
+                <div class="callout alert" role="alert" data-closable>
+                    The Geir files won't be released this season either. Please try again next. #RichardN00b.
+                    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            <!-- Countdown clock -->
+            {% if status == "Open" %}
+                <div class="big-container">
+                    <div class="form-general">
+                        <p class="tyres-reveal">Time to Tyres Reveal</p>
+                        <p class="tyres-reveal">&nbsp;&nbsp;⏳&nbsp;&nbsp;</p>
+                        <p class="tyres-reveal" id="countdown"></p>
+                    </div>
+                </div>
+            {% endif %}
+        </header>
+        <!-- Main -->
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+
+    <!-- Footer with credit and link to the developer's profile -->
+    <footer>
+        <div>
+            <button class="hollow button whatever">Made with 💜 by Flo®</button>
+        </div>
+    </footer>
+</html>

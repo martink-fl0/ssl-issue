@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Manage Game Status
+{% endblock %}
+
+{% block main %}
+<div class="settings_pannel">
+    <div class="settings-panel">
+        <a href="/open"><button class="button alert admin-buttons">Opens CURRENT season</button></a>
+        <a href="/closed"><button class="button alert admin-buttons">Closes CURRENT season</button></a>
+    </div>
+    <form action="/gamestatus" method="post" class="form-general">
+        <div>
+            <label for="newseason">Input New Season</label>
+            <input  id="newseason" name="newseason" placeholder="Sets new season as CURRENT" type="number" min="89">
+        </div>
+        <button class="button alert" type="submit">Update</button>
+    </form>
+</div>
+{% endblock %}
